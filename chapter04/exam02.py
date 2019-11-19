@@ -2,7 +2,11 @@ import random as rnd
 
 
 def bubble_sort(random_list):
-    print(random_list)
+    for i in range(0, len(random_list)-1):
+        for j in range(0, len(random_list)-1-i):
+            if random_list[j] > random_list[j+1]:
+                random_list[j], random_list[j+1] = random_list[j+1], random_list[j]
+    return random_list
 
 
 if __name__ == "__main__":
@@ -15,10 +19,3 @@ if __name__ == "__main__":
     sorted_list = bubble_sort(random_list)
     print("정렬된 결과\n{}".format(sorted_list))
 
-    i = 0
-    j = 0
-
-    for i in random_list:
-        for j in random_list:
-            if random_list(j) < random_list(j+1):
-                tmp = random_list(j)
