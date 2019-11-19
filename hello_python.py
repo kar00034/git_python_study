@@ -11,8 +11,7 @@ def div(a, b):
 
 
 if __name__ == "__main__":
-    print("hello python")
-    print("hi pycharm")
+    print("hello python hi pycharm")
     a = 10
     b = 5
     print("add({}, {}) = {}".format(a, b, add(a, b)))
