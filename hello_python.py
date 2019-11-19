@@ -2,10 +2,12 @@ def add(a, b):
     return a + b
 
 
+def mul(a, b):
+    return a * b
+
 if __name__ == "__main__":
     print("hello python")
     print("hi pycharm")
     a = 10
     b = 5
-    resul = a + b
-    print("add({}, {}) => {}".format(a, b, resul))
+    print("add({}, {}) = {}\nmul({}, {}) = {}".format(a, b, add(a, b), a, b, mul(a, b)))
