@@ -18,4 +18,3 @@ if __name__ == "__main__":
 
     sorted_list = bubble_sort(random_list)
     print("정렬된 결과\n{}".format(sorted_list))
-
