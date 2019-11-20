@@ -12,16 +12,18 @@ def lotto_generator():
 
 
 def lotto_start(a, b, c, d, e, f):
+    mylist = [a, b, c, d, e, f]
+    sorted_mylist = bubble_sort(mylist)
+    print("내 로또 번호 : {}".format(sorted_mylist))
     sorted_lotto = bubble_sort(list(lotto_generator()))
     # sorted_lotto.append(rnd.randint(1,46))
     bonus = rnd.randint(1, 45)
-    print("수정 전 보너스번호 : {}".format(bonus))
     while sorted_lotto.count(bonus) == 1:
         bonus = rnd.randint(1, 45)
     print("로또 번호 : {}".format(sorted_lotto))  # 정렬된 결과
-    print("최종 보너스 번호 : {}".format(bonus))
+    print("보너스 번호 : {}".format(bonus))
 
-    mylist = {a, b, c, d, e, f}
+
     cnt = 0
     bon = 0
     for i in sorted_lotto:
