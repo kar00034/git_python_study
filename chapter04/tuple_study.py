@@ -12,4 +12,9 @@ print("for문")
 for i in t_list:
     print("{} type : {}".format(i, type(i)))
 
+print(tuple1[1] + tuple1.index(3))
 
+set1 = {1, 2, 3}
+set1a = {1, 2, 3, 3}
+print(set1, set1a)
+print(type(set1),type(set1a))
