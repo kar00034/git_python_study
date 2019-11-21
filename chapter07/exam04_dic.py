@@ -10,6 +10,8 @@
 # 학생 정보 : 학번, 학생명, 국어, 영어, 수학, 총점, 평균, 등수
 file_path = "student.txt"
 menu = 0
+
+
 # if __name__ == "__main__":
 #     stu_list = (("01", "홍길동", "90", "90", "90"))
 #     total = 0
@@ -28,7 +30,7 @@ def printmenu():
     menu_list = ["1.학생 목록", "2.학생 추가", "3.학생 수정", "4.학생 삭제", "5.종료"]
     print("====================================================================")
     for i in menu_list:
-        print(i, end='\t')
+        print(i, end='\t')  #
     print()
     print("====================================================================")
     sel_menu = input("메뉴를 선택해주세요 >> ")
@@ -44,96 +46,36 @@ def printmenu():
 
 
 def addstu():
-    global file_path
-    err = 0
-    stu = ["stu_number", "name", "kor", "eng", "math"]
-    print("다음 정보를 입력해주세요.")
+    pass
 
-    f = open(file_path, "a")
-    r = open(file_path, "r")
-
-    for i in range(0, len(stu)):
-        stu[i] = input("{} : ".format(stu[i]))
-    for i in r:
-        if stu[0] == i[0:1]:
-            print("중복입니다")
-            err = 1
-
-    if err == 0:
-        f.write('\t\t'.join(stu))
-        f.write('\n')
-    else:
-        print("초기 화면으로 돌아갑니다")
-
-    r.close()
-    f.close()
 
 
 def stulist():
     print("이름\t\t학생번호\tkor\t\teng\t\tmath")
     with open(file_path, "r") as f:
         for info in f:
-            print("{}".format(info), end='')
+            print("{}".format(info), end='')  #
+    pass
 
 
 def delstu():
-    cnt = 0
-    na = input("삭제할 학생의 번호를 입력하세요 > ")
-    r = open(file_path, "r")
-    for i in r:
-        if na == i[0:1]:
-            cnt = 1
-            print(i)
-            print(na)
-
-    if cnt == 1:
-        ans = input("삭제 하실거면 1을 눌러주세요")
-    if ans == 1:
-        f = open(file_path, "a")
-        for i in f:
-            if na == f[0:1]:
-                pass
-
-
-    f.close()
-    r.close()
+    print("del")
 
 
 def editstu():
-    cnt = 0
-    na = input("수정할 학생의 번호를 입력하세요 > ")
-    r = open(file_path, "r")
-    f = open(file_path, "a+")
-    for i in r:
-        if na == i[0:1]:
-            cnt = 1
-
-    if cnt == 1:
-        stu = ["stu_number", "name", "kor", "eng", "math"]
-        print("다음 정보를 입력해주세요.")
-        for i in range(0, len(stu)):
-            stu[i] = input("{} : ".format(stu[i]))
-
-        for i in r:
-            if stu[0] != i[0:1]:
-                f.write('\t\t'.join(stu))
-                print("수정되었습니다.")
-            else:
-                print("중복입니다")
-    r.close()
-    f.close()
-
-
-
+    search = input("찾을 학생의 번호를 입력하세요 > ")
+    with open(file_path, "r+")as f:
+        for i in f:
+             if searh == i[0:1]:
 
 
 if __name__ == "__main__":
     while True:
-        printmenu() #완
+        printmenu()
         if menu == 1:
-            stulist() # 완
+            stulist()
         elif menu == 2:
-            addstu() # 완
+            addstu()
         elif menu == 3:
             editstu()
         elif menu == 4:
@@ -143,11 +85,3 @@ if __name__ == "__main__":
             break
         else:
             print("다시 선택해주세요.")
-
-# 구상
-# list(name1,name2,name3)
-# list2(no1,no2,no3)
-#
-# dic{name1:{},name2:{},name3:{}}
-z= input("")
-print(z)
