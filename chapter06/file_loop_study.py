@@ -4,7 +4,7 @@ file_path = "two_times_table.txt"
 def file_write():
     global file_path
     f = open(file_path, "w")
-    for num in range(1,6):
+    for num in range(1, 6):
         format_string = "2 x {0} = {1}\n".format(num, num * 2)
         f.write(format_string)
     f.close()

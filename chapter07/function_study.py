@@ -1,15 +1,15 @@
 # 1.리스트 전달 2. 투플 3. dictionary
 def my_student_info_list(info):
-    print("==================")
+    print("====================================")
     print(type(info))
     for i in range(len(info)):
-        print("name = {}".format(info[i][0]))
-        print("ID = {}".format(info[i][1]))
-        print("phoneNumber = {}".format(info[i][2]))
+        print("name = {}".format(info[i]))
+        print("ID = {}".format(info[i]))
+        print("phoneNumber = {}".format(info[i]))
 
 
 def my_student_info_tuple(info):
-    print("==================")
+    print("====================================")
     stu_tuple = (info,)
     print(type(stu_tuple))
     for i in range(len(stu_tuple)):
@@ -20,8 +20,7 @@ def my_student_info_tuple(info):
 
 
 def my_student_info_dictionary(info):
-    j = 0
-    print("===================")
+    print("=====================================")
     print(type(info))
     for i in range(len(info)):
         print("번호 {}".format(i+1))
