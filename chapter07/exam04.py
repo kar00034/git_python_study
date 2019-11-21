@@ -90,7 +90,7 @@ def editstu():
 if __name__ == "__main__":
     global sel_menu
     while True:
-        printmenu()
+        printmenu() #
         if menu == 1:
             stulist() # 완
         elif menu == 2:
@@ -98,7 +98,7 @@ if __name__ == "__main__":
         elif menu == 3:
             editstu()
         elif menu == 4:
-            delstu()
+            delstu()완
         elif menu == 5:
             print("프로그램을 종료합니다.")
             break
