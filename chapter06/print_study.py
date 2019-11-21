@@ -11,5 +11,6 @@ print("{:.3f}".format(3))
 print("{:,}".format(1234567))
 print("{:.1%}".format(0.3258))
 print("{:.2e}".format(92500000000))
-print("16진수 : {0:x} \t8진수 : {0:o} \t2진수 : {0:b}\t10진수 : {0}".format(16))
 
+# github에서 변경
+print("16진수 : {0:x} \t8진수 : {0:o} \t2진수 : {0:b}\t10진수 : {0}".format(16))
