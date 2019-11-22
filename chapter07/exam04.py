@@ -50,11 +50,11 @@ def printmenu():
 
 def stulist():
     global slist
-    print("이름\t학생번호\tkor\teng\tmath\t총점\t\t평균")
+    print("학생번호\t이름\tkor\teng\tmath\t총점\t\t평균")
     for i in range(len(slist)):
         total = int(slist[i][2]) + int(slist[i][3]) + int(slist[i][4])
         avg = total / 3
-        print("{}\t{}\t\t{}\t{}\t{}\t\t{}\t\t{:.2f}".format(slist[i][0], slist[i][1], slist[i][2], slist[i][3],
+        print("{}\t{}\t{}\t{}\t{}\t\t{}\t\t{:.2f}".format(slist[i][0], slist[i][1], slist[i][2], slist[i][3],
                                                             slist[i][4], total, avg))
 
 
@@ -68,7 +68,6 @@ def addstu():
     for i in range(len(slist)):
         if add_list[0] == slist[i][0]:
             print("중복입니다. 다시 입력해주세요")
-            print(i)
             cnt = 1
             break
     if cnt != 1:
@@ -79,10 +78,10 @@ def addstu():
 def editstu():
     global slist
     cnt = 1
-    print("학생번호\t이름\t\tkor\t\teng\t\tmath")
+    print("학생번호\t이름\tkor\teng\tmath")
     for i in range(len(slist)):
         for j in range(len(slist[i])):
-            print(slist[i][j],end='\t\t')
+            print(slist[i][j],end='\t')
         print()
     tar = input("수정할 학생의 번호를 입력하세요 > ")
     for i in range(len((slist))):
@@ -100,11 +99,11 @@ def editstu():
 def delstu():
     global slist
     cnt = 0
-    print("학생번호\t이름\t\tkor\t\teng\t\tmath")
+    print("학생번호\t이름\tkor\teng\tmath")
     for i in range(len(slist)):
-       for j in range(len(slist[i])):
-           print(slist[i][j], end='\t\t')
-       print()
+        for j in range(len(slist[i])):
+            print(slist[i][j],end='\t')
+        print()
     tar = input("삭제할 학생의 번호를 입력하세요 > ")
     for i in range(len(slist)):
        if tar == slist[i][0]:

@@ -1,28 +1,36 @@
-# list, tuple, dictionary, set 중 하나를 선택하여 프로그램 작성
-# student_management 패키지 추가
-# 1)1. 학생목록, 2.학생추가 3.학생수정, 4.학생삭제, 5.종료메뉴
-# 2)프로그램 수행 시 먼저 student_list.txt 파일을 읽어 수행
-# 3)각각 메뉴별 수행되도록 작성
-# 4)종료시 학생목록이 student_list.txt에 저장
-# 5)프린트하여 제출
-# 6)이왕이면 2개(dictionary + 재량)
-
-# 학생 정보 : 학번, 학생명, 국어, 영어, 수학, 총점, 평균, 등수
+# 학생 정보 : 학번, 학생명, 국어, 영어, 수학, 총점, 평균
 file_path = "student.txt"
 menu = 0
+sdic = {}
+slist = []
+list_keys = []
+
+def find_key():
+    global sdic
+    global list_keys
+    key = sdic.keys()
+    list_keys = list(key)
 
 
-# if __name__ == "__main__":
-#     stu_list = (("01", "홍길동", "90", "90", "90"))
-#     total = 0
-#     for i in range(0,len(stu_list)):
-#         for j in range(2,5):
-#             total = total + int(stu_list[i][j])
-#     for i in range(0,len(stu_list)):
-#         student_dic = {"1": {"학번": "01", "이름": "홍길동", "국어": stu_list[i][2], "영어": stu_list[i][3], "수학": stu_list[i][4], "총점": total,
-#               "평균": total / 3}}
-#         print(student_dic)
-#     # student_management_dic(student_dic)
+def read_file():
+    global sdic
+    global list_keys
+    i = 0
+    try:
+        f = open("student.txt", "r")
+        line = f.readline()
+        while line:
+            line_dic = line.split()
+            slist.append(line_dic)
+            sdic[slist[i][0]]=[slist[i][1], slist[i][2], slist[i][3], slist[i][4]]
+            line = f.readline()
+            i = i+1
+    except FileNotFoundError as er:
+        print("파일이 없습니다.", er, sep='\n')
+    finally:
+        f.close()
+        find_key()
+
 
 
 def printmenu():
@@ -30,7 +38,7 @@ def printmenu():
     menu_list = ["1.학생 목록", "2.학생 추가", "3.학생 수정", "4.학생 삭제", "5.종료"]
     print("====================================================================")
     for i in menu_list:
-        print(i, end='\t')  #
+        print(i, end='\t')
     print()
     print("====================================================================")
     sel_menu = input("메뉴를 선택해주세요 >> ")
@@ -45,31 +53,101 @@ def printmenu():
     return menu
 
 
-def addstu():
-    pass
-
-
-
 def stulist():
-    print("이름\t\t학생번호\tkor\t\teng\t\tmath")
-    with open(file_path, "r") as f:
-        for info in f:
-            print("{}".format(info), end='')  #
-    pass
+    global list_keys
+    global sdic
+
+    print("학생번호\t이름\t\tkor\teng\tmath\t총점\t\t평균")
+    for i in range(len(sdic)):
+        total = int(sdic[list_keys[i]][1])+int(sdic[list_keys[i]][2])+int(sdic[list_keys[i]][3])
+        avg = total/3
+        print("{:}\t{:>8}\t{}\t{}\t{}\t\t{}\t\t{:.2f}".format(list_keys[i], sdic[list_keys[i]][0], sdic[list_keys[i]][1], sdic[list_keys[i]][2], sdic[list_keys[i]][3], total, avg))
 
 
-def delstu():
-    print("del")
+def addstu():
+    cnt = 0
+    global sdic
+    global list_keys
+    print("현재 있는 학생 번호 : {}".format(list_keys))
+    add_list = ["학번", "이름", "kor", "eng", "math"]
+    print("다음 정보를 입력하세요.")
+    for i in range(0, len(add_list)): #입력
+        add_list[i] = input("{} : ".format(add_list[i]))
+    for i in range(len(sdic)): #확인
+        print(sdic[list_keys[i]][0])
+        print(add_list[0][0])
+        if add_list[0][0] == list_keys[i]:
+            print("중복입니다. 다시 입력해주세요")
+            cnt = 1
+            break
+    if cnt != 1: #중복 아닐시
+        sdic[add_list[0]]= [add_list[1],add_list[2],add_list[3],add_list[4]]
+        print("입력되었습니다.")
+        find_key()
 
 
 def editstu():
-    search = input("찾을 학생의 번호를 입력하세요 > ")
-    with open(file_path, "r+")as f:
-        for i in f:
-             if searh == i[0:1]:
+    global sdic
+    global list_keys
+    cnt = 1
+    for i in range(len(sdic)):
+        for j in range(len(list_keys[i])):
+            print(list_keys[i],sdic[list_keys[i]], end='\t')
+        print()
+    tar = input("수정할 학생의 번호를 입력하세요 > ")
+    for i in range(len((sdic))):
+        if tar == list_keys[i]:
+            edit_list = ["이름", "kor", "eng", "math"]
+            print("다음 정보를 입력하세요.")
+            for j in range(0, len(edit_list)):
+                sdic[list_keys[i]][j] = input("{} : ".format(edit_list[j]))
+                cnt = 0
+            break
+    if cnt == 1:
+        print("해당학생은 없습니다.")
+
+
+def delstu():
+    global sdic
+    global list_keys
+    cnt = 1
+    for i in range(len(sdic)):
+        for j in range(len(list_keys[i])):
+            print(list_keys[i],sdic[list_keys[i]], end='\t')
+        print()
+    tar = input("삭제할 학생의 번호를 입력하세요 > ")
+    for i in range(len((sdic))):
+        if tar == list_keys[i]:
+            print(sdic[list_keys[i]])
+            ans = input("삭제하려면 y을 눌러주세요")
+            if ans == 'y':
+                del sdic[list_keys[i]]
+                print("삭제되었습니다.")
+                cnt = 0
+                break
+            else:
+                print("취소되었습니다.")
+                cnt = 0
+                break
+    find_key()
+    if cnt == 1:
+        print("해당학생은 없습니다.")
+
+
+def save():
+    global sdic
+    global list_keys
+    with open(file_path, "w")as f:
+        for i in range(len((list_keys))):
+            f.write(list_keys[i] + '\t' + sdic[list_keys[i]][0] +
+                    '\t' + sdic[list_keys[i]][1] + '\t' + sdic[list_keys[i]][2] +
+                    '\t' + sdic[list_keys[i]][3] + '\n')
+    print("프로그램을 종료합니다.")
+
 
 
 if __name__ == "__main__":
+    read_file()
     while True:
         printmenu()
         if menu == 1:
@@ -81,7 +159,7 @@ if __name__ == "__main__":
         elif menu == 4:
             delstu()
         elif menu == 5:
-            print("프로그램을 종료합니다.")
+            save()
             break
         else:
             print("다시 선택해주세요.")
