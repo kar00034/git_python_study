@@ -23,7 +23,7 @@ def read_file():
             slist.append(line_list)
             line = f.readline()
     except FileNotFoundError as er:
-        print("파일이 없습니다.", e, sep='\n')
+        print("파일이 없습니다.", er, sep='\n')
     finally:
         f.close()
 
