@@ -21,8 +21,6 @@ with open(file_path, 'r') as f:
 
 for i in range(len(coffee)):
     coffee_list.append(list(coffee[date[1]][i].keys()))
-
-for i in range(len((coffee_list))):
     coffee_menu.append(coffee_list[i][0])
 
 for i in range(len(coffee)):
