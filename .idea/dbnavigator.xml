@@ -24,23 +24,19 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="58ba08a3-615a-4c62-9dcb-8d4ec2f081b9">
-        <schema name="coffee2" object-types="view, table, function, procedure" />
-        <schema name="mysql" object-types="view, table, function" />
-      </connection>
       <connection connection-id="fa074df7-7863-4099-add1-756f0c6cf4d3">
-        <schema name="coffee2" object-types="view, table, function, procedure, argument" />
+        <schema name="coffee2" object-types="function, procedure" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="58ba08a3-615a-4c62-9dcb-8d4ec2f081b9">
-      <console name="Mysql_root" type="STANDARD" schema="mysql" session="Main"><![CDATA[show databases;]]></console>
+      <console name="Mysql_root" type="STANDARD" schema="mysql" session="Main">show databases;</console>
     </connection>
     <connection id="fa074df7-7863-4099-add1-756f0c6cf4d3">
-      <console name="mysql_study" type="STANDARD" schema="coffee2" session="Main"><![CDATA[select user(),database();
+      <console name="mysql_study" type="STANDARD" schema="coffee2" session="Main">select user(),database();
 
-select * from product;]]></console>
+select * from product;</console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
